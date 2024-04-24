@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flowchart Generator</title>
+</head>
+<body>
+    <h1>Flowchart Generator</h1>
+    <form action="/generate" method="post" enctype="multipart/form-data">
+        <label for="file">Choose a CSV file:</label>
+        <input type="file" id="file" name="file" accept=".csv" required>
+        <button type="submit">Generate Flowchart</button>
+    </form>
+    <div id="pdf-container"></div>
+    <script>
+        // Check if the PDF was received and display it
+        if (window.location.search.includes('pdf')) {
+            const pdfContainer = document.getElementById('pdf-container');
+            const pdfUrl = window.location.origin + '/pdf' + window.location.search;
+            pdfContainer.innerHTML = `<iframe src="${pdfUrl}" width="100%" height="600px"></iframe>`;
+        }
+    </script>
+</body>
+</html>
