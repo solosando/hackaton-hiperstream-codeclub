@@ -1,27 +1,41 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
-<a name="readme-top"></a>
+# Projeto Hackathon - Equipe Code Club
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/your_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+## Sobre o Projeto
 
-  <h3 align="center">Code Club Hackathon Project</h3>
+Este projeto foi desenvolvido para o desafio proposto por uma empresa durante um hackathon. A aplicação recebe um arquivo CSV e retorna um diagrama em formato PDF. A solução encontrada pela equipe Code Club foi a criação de um site web, que permite ao usuário enviar o arquivo CSV e receber o diagrama PDF correspondente. O site é suportado por um programa em Python, que roda em um ambiente Docker.
 
-  <p align="center">
-    An innovative solution for generating diagrams from CSV files!
-    <br />
-    <a href="https://github.com/your_username/repo_name"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/your_username/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/your_username/repo_name/issues/new?labels=bug&template=bug-report---.md">Report Bug</a>
-    ·
-    <a href="https://github.com/your_username/repo_name/issues/new?labels=enhancement&template=feature-request---.md">Request Feature</a>
-  </p>
-</div>
+### Construído Com
 
-<!-- TABLE OF CONTENTS -->
+- HTML
+- Python
+- Docker
+
+## Como Começar
+
+### Pré-requisitos
+
+- Docker instalado no seu sistema para rodar o container.
+
+### Instalação
+
+1. Clone o repositório:
+   ```sh
+   git clone https://github.com/seu_usuario/seu_projeto.git
+Construa o container Docker:
+docker build -t seu_projeto .
+Rode o container:
+docker run -p 8000:8000 seu_projeto
+Uso
+Para usar o aplicativo, acesse http://localhost:8000 no seu navegador, envie um arquivo CSV e receba o diagrama em PDF.
+
+Contribuindo
+Contribuições são sempre bem-vindas! Veja como:
+
+Fork o projeto
+Crie sua branch de recursos (git checkout -b feature/AmazingFeature)
+Commit suas mudanças (git commit -m 'Add some AmazingFeature')
+Push para a branch (git push origin feature/AmazingFeature)
+Abra um Pull Request
+Contato
+Equipe Code Club - email@example.com
+Link do Projeto: https://github.com/seu_usuario/seu_projeto
