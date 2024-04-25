@@ -1,22 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>CSV to Flowchart PDF Converter</title>
+    <title>Conversor de CSV para Diagrama em PDF</title>
+    <style>
+        body {
+            background-color: darkgreen;
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .button-panel {
+            background-color: green;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>Convert CSV to Flowchart PDF</h1>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept=".csv">
-        <button type="submit">Upload CSV and Convert</button>
-    </form>
+    <div class="button-panel">
+        <h1>Hackathon 2024 - HiperStream</h1>
+        <h2>Code Club | HIPER-220</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".csv">
+            <button type="submit">Enviar CSV e Converter</button>
+        </form>
 
-    <!-- Botão para baixar o PDF gerado -->
-    <button onclick="downloadPDF()">Download PDF</button>
+        <!-- Área para visualização do PDF -->
+        <iframe id="pdfViewer"></iframe>
+
+        <!-- Botão para baixar o PDF gerado -->
+        <button onclick="downloadPDF()">Baixar PDF</button>
+    </div>
 
     <script>
         function downloadPDF() {
             window.location.href = '/download';
+        }
+
+        // Atualização para mostrar o PDF na tela
+        if (window.location.search.includes("pdf=true")) {
+            document.getElementById('pdfViewer').style.display = 'block';
+            document.getElementById('pdfViewer').src = '/download';
         }
     </script>
 </body>
