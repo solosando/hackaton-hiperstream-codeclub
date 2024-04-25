@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSV to Flowchart PDF Converter</title>
+</head>
+<body>
+    <h1>Convert CSV to Flowchart PDF</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".csv">
+        <button type="submit">Upload CSV and Convert</button>
+    </form>
+
+    <!-- Botão para baixar o PDF gerado -->
+    <button onclick="downloadPDF()">Download PDF</button>
+
+    <script>
+        function downloadPDF() {
+            window.location.href = '/download';
+        }
+    </script>
+</body>
+</html>
