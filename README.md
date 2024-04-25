@@ -20,6 +20,7 @@ Trata-se de uma aplicação web de arquitetura monolítica, que consiste em um s
 
 ### Como funciona
 A aplicação web foi desenvolvida em Python. O diagrama foi criado utilizando o pacote graphviz, uma coleção de ferramentas de código aberto para visualização de grafos e redes. O diagrama é então convertido para PDF utilizando o pacote fpdf. O site web foi hospedado em um servidor web Nginx, que é um servidor web HTTP e proxy reverso para servidores web. O site web é executado em um container Docker, que hospeda também a aplicação, permitindo-as serem executadas em qualquer sistema operacional. O site web é acessível através de um endereço IP público, que pode ser acessado por qualquer pessoa com acesso à internet. O seguinte diagrama explicita o funcionamento dela como um todo:
+![Organizador gráfico de problema e soluções retrô verde e preto](https://github.com/solosando/hackaton-hiperstream-codeclub/assets/112891254/b6d5e502-fd59-416c-bab7-97a79e9757fc)
 
 ## Como Implementar a solução
 ### Pré-requisitos
