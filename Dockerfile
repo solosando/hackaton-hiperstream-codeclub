@@ -1,32 +1,21 @@
-# For more information, please refer to https://aka.ms/vscode-docker-python
-FROM python:3.12-slim
+# Use a imagem base desejada, por exemplo, Python para executar uma aplicação Flask
+FROM python:3.9-slim
 
-# Keeps Python from generating .pyc files in the container
-ENV PYTHONDONTWRITEBYTECODE=1
+# Instale o servidor web, por exemplo, Nginx
+RUN apt-get update && apt-get install -y nginx
 
-# Turns off buffering for easier container logging
-ENV PYTHONUNBUFFERED=1
+# Copie a configuração do servidor Nginx
+COPY nginx.conf /etc/nginx/nginx.conf
 
-# Install pip requirements
-COPY requirements.txt .
-RUN python -m pip install -r requirements.txt
-
-WORKDIR /app
+# Copie os arquivos da aplicação
 COPY . /app
 
-# Creates a non-root user with an explicit UID and adds permission to access the /app folder
-# For more info, please refer to https://aka.ms/vscode-docker-python-configure-containers
-RUN adduser -u 5678 --disabled-password --gecos "" appuser && chown -R appuser /app
-USER appuser
+# Instale as dependências da aplicação, se necessário
+WORKDIR /app
+RUN pip install -r requirements.txt
 
-# During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
-CMD ["python", "-m", "Etl"]
-
-# Use an existing Nginx image as a base
-FROM nginx:alpine
-
-# Copy the website files into the container
-COPY . /usr/share/nginx/html
-
-# Expose port 80 to allow incoming traffic
+# Exponha a porta do servidor web
 EXPOSE 80
+
+# Comando para iniciar o servidor Nginx e a aplicação Python
+CMD service nginx start && python app.py

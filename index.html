@@ -7,19 +7,44 @@
 </head>
 <body>
     <h1>Flowchart Generator</h1>
-    <form action="/generate" method="post" enctype="multipart/form-data">
+    <form id="flowchart-form" action="/generate" method="post" enctype="multipart/form-data">
         <label for="file">Choose a CSV file:</label>
         <input type="file" id="file" name="file" accept=".csv" required>
         <button type="submit">Generate Flowchart</button>
     </form>
     <div id="pdf-container"></div>
     <script>
-        // Check if the PDF was received and display it
+        // Checa se pdf foi recebido e mostra
         if (window.location.search.includes('pdf')) {
             const pdfContainer = document.getElementById('pdf-container');
-            const pdfUrl = window.location.origin + '/pdf' + window.location.search;
+            const pdfUrl = `${window.location.origin}/pdf${window.location.search}`;
             pdfContainer.innerHTML = `<iframe src="${pdfUrl}" width="100%" height="600px"></iframe>`;
         }
+
+        // Tratamento de erro para envio
+        const form = document.getElementById('flowchart-form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+            })
+           .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response;
+            })
+           .then(response => response.blob())
+           .then(blob => {
+                const url = URL.createObjectURL(blob);
+                window.location.assign(`${url}?pdf`);
+            })
+           .catch(error => {
+                console.error('Houve um problema:', error);
+            });
+        });
     </script>
 </body>
 </html>
