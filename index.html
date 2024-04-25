@@ -1,22 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>CSV to Flowchart PDF Converter</title>
+    <title>Conversor de CSV para Diagrama em PDF</title>
+    <style>
+        body {
+            background-color: #004d40; /* dark teal */
+            color: #FFFFFF; /* white */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        .button-panel {
+            background-color: #3F3276; /* light teal */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: auto;
+        }
+        h1, h2 {
+            margin-top: 0;
+            padding-top: 10px;
+        }
+        button, .file-input-wrapper {
+            background-color: #565282; /* teal */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover, .file-input-wrapper:hover {
+            background-color: #3A2449;
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .file-input-wrapper {
+            display: inline-block;
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+            display: none;
+            border: none;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Convert CSV to Flowchart PDF</h1>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept=".csv">
-        <button type="submit">Upload CSV and Convert</button>
-    </form>
+    <div class="button-panel">
+        <h1>Hackathon 2024 - HiperStream</h1>
+        <h2>Code Club | HIPER-220</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <label class="file-input-wrapper">Escolher arquivo
+                <input type="file" name="file" accept=".csv" onchange="this.form.submit()">
+            </label>
+            <button type="submit">Enviar CSV e Converter</button>
+        </form>
 
-    <!-- Botão para baixar o PDF gerado -->
-    <button onclick="downloadPDF()">Download PDF</button>
+        <!-- Área para visualização do PDF -->
+        <iframe id="pdfViewer"></iframe>
+
+        <!-- Botão para baixar o PDF gerado -->
+        <button onclick="downloadPDF()">Baixar PDF</button>
+    </div>
 
     <script>
         function downloadPDF() {
             window.location.href = '/download';
+        }
+
+        // Atualização para mostrar o PDF na tela
+        if (window.location.search.includes("pdf=true")) {
+            document.getElementById('pdfViewer').style.display = 'block';
+            document.getElementById('pdfViewer').src = '/download';
         }
     </script>
 </body>
