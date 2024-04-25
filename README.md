@@ -30,13 +30,13 @@ A aplicação web foi desenvolvida em Python. O diagrama foi criado utilizando o
 ### Instanciando os containers do servidor web e da aplicação
 
 1. Clone o repositório:
-``` git clone (https://github.com/solosando/hackaton-hiperstream-codeclub/blob/main/README.md) ```
+` git clone (https://github.com/solosando/hackaton-hiperstream-codeclub/blob/main/README.md) `
 
 2. Construa o container Docker:
-```docker build -t nome_da_sua_imagem ```
+`docker build -t my-app .`
 
 3. Rode o container:
-```  docker run --rm -p 80:80 nome_da_sua_imagem ```
+`  docker run --name my-app -p 80:80 -d my-app `
 
 Para usar o aplicativo do seu navegadior, acesse http://localhost:8000 ou http://127.0.0.1:8080
 

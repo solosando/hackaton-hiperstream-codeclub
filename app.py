@@ -1,6 +1,5 @@
 import csv
 import graphviz
-import io
 from fpdf import FPDF
 import requests
 
