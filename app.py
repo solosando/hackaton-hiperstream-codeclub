@@ -1,57 +1,45 @@
-import csv
-import graphviz
-from fpdf import FPDF
-import requests
+from http.server import BaseHTTPRequestHandler, HTTPServer
+from urllib.parse import parse_qs
 
 
-def read_file_from_website(url: str) -> str:
-    """
-    Recebendo o arquivo da página web
-    """
-    response = requests.get(url)
-    return response.text
+# Função para lidar com requisições POST
+def handle_post_request(request):
+    # Obtendo o tamanho do conteúdo da requisição
+    content_length = int(request.headers["Content-Length"])
+
+    # Lendo o conteúdo da requisição
+    post_data = request.rfile.read(content_length)
+
+    # Decodificando o conteúdo da requisição
+    post_data_decoded = post_data.decode("utf-8")
+
+    # Processando o conteúdo da requisição (nesse caso, apenas devolvendo o conteúdo)
+    response_content = post_data_decoded
+
+    # Definindo o cabeçalho para o download do arquivo PDF
+    request.send_response(200)
+    request.send_header("Content-type", "application/pdf")
+    request.send_header("Content-Disposition", 'attachment; filename="arquivo.pdf"')
+    request.end_headers()
+
+    # Escrevendo o conteúdo do arquivo PDF como resposta
+    with open("arquivo.pdf", "rb") as file:
+        request.wfile.write(file.read())
 
 
-def transform_csv_to_flowchart(csv_content: str) -> graphviz.Digraph:
-    """
-    Transformando o arquivo csv em um grafo
-    """
-    flowchart = graphviz.Digraph()
-    reader = csv.reader(csv_content.splitlines())
-    for row in reader:
-        flowchart.node(row[0], row[0])
-        if len(row) > 1:
-            flowchart.edge(row[0], row[1])
-    return flowchart
+# Função para lidar com requisições HTTP
+def simple_http_request_handler(request, client_address, server):
+    if request.command == "POST":
+        handle_post_request(request)
 
 
-def generate_pdf(flowchart: graphviz.Digraph) -> bytes:
-    """
-    Transformando o grafo em um pdf
-    """
-    pdf = flowchart.pipe(format="pdf")
-    return pdf
-
-
-def send_pdf_to_webpage(pdf_content: bytes, url: str) -> None:
-    """
-    Mandando o pdf para a página usando um POST request
-    """
-    files = {"file": ("flowchart.pdf", pdf_content, "application/pdf")}
-    requests.post(url, files=files)
-
-
-def create_flowchart_from_csv_url(csv_url: str, webpage_url: str) -> None:
-    """
-    Função integrando o processo
-    """
-    csv_content = read_file_from_website(csv_url)
-    flowchart = transform_csv_to_flowchart(csv_content)
-    pdf_content = generate_pdf(flowchart)
-    send_pdf_to_webpage(pdf_content, webpage_url)
+# Função principal para iniciar o servidor
+def run(server_class=HTTPServer, handler_class=simple_http_request_handler, port=8000):
+    server_address = ("", port)
+    httpd = server_class(server_address, handler_class)
+    print(f"Servidor rodando na porta {port}...")
+    httpd.serve_forever()
 
 
 if __name__ == "__main__":
-    csv_url = "http://localhost/file.csv"
-    webpage_url = "http://localhost/"
-    create_flowchart_from_csv_url(csv_url, webpage_url)
+    run()
