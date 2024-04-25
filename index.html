@@ -46,10 +46,10 @@
         .file-input-wrapper {
             display: inline-block;
         }
-        iframe {
+        img {
             width: 100%;
-            height: 500px;
-            display: none;
+            height: auto;
+            display: none; /* Hide until loaded */
             border: none;
             margin-top: 20px;
         }
@@ -66,8 +66,8 @@
             <button type="submit">Enviar CSV e Converter</button>
         </form>
 
-        <!-- Área para visualização do PDF -->
-        <iframe id="pdfViewer"></iframe>
+        <!-- Área para visualização do PNG -->
+        <img id="pngViewer" src="" alt="Visualização do Diagrama">
 
         <!-- Botão para baixar o PDF gerado -->
         <button onclick="downloadPDF()">Baixar PDF</button>
@@ -78,10 +78,10 @@
             window.location.href = '/download';
         }
 
-        // Atualização para mostrar o PDF na tela
-        if (window.location.search.includes("pdf=true")) {
-            document.getElementById('pdfViewer').style.display = 'block';
-            document.getElementById('pdfViewer').src = '/download';
+        // Atualização para mostrar o PNG na tela
+        if (window.location.search.includes("png=true")) {
+            document.getElementById('pngViewer').style.display = 'block';
+            document.getElementById('pngViewer').src = '/download_png'; // Ajuste o caminho conforme necessário
         }
     </script>
 </body>
