@@ -1,3 +1,6 @@
-graphviz
-fpdf
-requests
+pandas 
+networkx 
+matplotlib.pyplot 
+reportlab.lib.pagesizes 
+reportlab.pdfgen i
+flask 
