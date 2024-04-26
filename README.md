@@ -14,12 +14,12 @@ Trata-se de uma aplicação web de arquitetura monolítica, que consiste em um s
 - Python
 - HTML 
 - graphviz
-- Docker
 - Nginx
 
 ### Como funciona
-A aplicação web foi desenvolvida em Python. O diagrama foi criado utilizando o pacote graphviz, uma coleção de ferramentas de código aberto para visualização de grafos e redes. O diagrama é então convertido para PDF utilizando o pacote fpdf. O site web foi hospedado em um servidor web Nginx, que é um servidor web HTTP e proxy reverso para servidores web. O site web é executado em um container Docker, que hospeda também a aplicação, permitindo-as serem executadas em qualquer sistema operacional. O site web é acessível através de um endereço IP público, que pode ser acessado por qualquer pessoa com acesso à internet. O seguinte diagrama explicita o funcionamento dela como um todo:
-![Organizador gráfico de problema e soluções retrô verde e preto](https://github.com/solosando/hackaton-hiperstream-codeclub/assets/112891254/b6d5e502-fd59-416c-bab7-97a79e9757fc)
+A aplicação web foi desenvolvida em Python. O diagrama foi criado utilizando o pacote graphviz, uma coleção de ferramentas de código aberto para visualização de grafos e redes. O diagrama é então convertido para PDF utilizando o pacote fpdf. O site web foi hospedado em um servidor web Nginx, que é um servidor web HTTP e proxy reverso para servidores web. O site web é executado em um container nginx, que hospeda também a aplicação, permitindo-as serem executadas em qualquer sistema operacional. O site web é acessível através de um endereço IP público, que pode ser acessado por qualquer pessoa com acesso à internet. O seguinte diagrama explicita o funcionamento dela como um todo:
+![Organizador gráfico de problema e soluções retrô verde e preto](https://github.com/solosando/hackaton-hiperstream-codeclub/assets/112891254/a0eb8dbb-efd7-4698-956f-86915d970923)
+
 
 Nela o usuário envia um arquivo .csv, a aplicação gera um grafo tal qual este:
 ![alt text](<grafo.png 21-14-40-250.png>)
@@ -30,7 +30,7 @@ A integração web é toda feita por requisiçöes intermediadas por bibliotecas
 ## Como Implementar a solução
 ### Pré-requisitos
 
-- Docker instalado no seu sistema para rodar o container.
+- nginx instalado no seu sistema para rodar o container.
 - Python 3.9 ou versöes superiores
 
 ### Instanciando os containers do servidor web e da aplicação
@@ -38,11 +38,11 @@ A integração web é toda feita por requisiçöes intermediadas por bibliotecas
 1. Clone o repositório:
 ` git clone (https://github.com/solosando/hackaton-hiperstream-codeclub/blob/main/README.md) `
 
-2. Construa o container Docker:
-`docker build -t my-app .`
+2. Construa o container nginx:
+`nginx build -t my-app .`
 
 3. Rode o container:
-`  docker run --name my-app -p 80:80 -d my-app `
+`  nginx run --name my-app -p 80:80 -d my-app `
 
 Para usar o aplicativo do seu navegadior, acesse http://localhost:8000 ou http://127.0.0.1:8080
 
