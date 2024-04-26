@@ -17,7 +17,7 @@ Trata-se de uma aplicação web de arquitetura monolítica, que consiste em um s
 - Nginx
 
 ### Como funciona
-A aplicação web foi desenvolvida em Python. O diagrama foi criado utilizando o pacote graphviz, uma coleção de ferramentas de código aberto para visualização de grafos e redes. O diagrama é então convertido para PDF utilizando o pacote fpdf. O site web foi hospedado em um servidor web Nginx, que é um servidor web HTTP e proxy reverso para servidores web. O site web é executado em um container nginx, que hospeda também a aplicação, permitindo-as serem executadas em qualquer sistema operacional. O site web é acessível através de um endereço IP público, que pode ser acessado por qualquer pessoa com acesso à internet. O seguinte diagrama explicita o funcionamento dela como um todo:
+A aplicação web foi desenvolvida em Python. O diagrama foi criado utilizando o pacote graphviz, uma coleção de ferramentas de código aberto para visualização de grafos e redes. O diagrama é então convertido para PDF utilizando o pacote fpdf. O site web foi hospedado em um servidor web Nginx, que é um servidor web HTTP e proxy reverso para servidores web que hospeda também a aplicaçã. O site web é acessível através de um endereço IP público, que pode ser acessado por qualquer pessoa com acesso à internet. O seguinte diagrama explicita o funcionamento dela como um todo:
 ![Organizador gráfico de problema e soluções retrô verde e preto](https://github.com/solosando/hackaton-hiperstream-codeclub/assets/112891254/a0eb8dbb-efd7-4698-956f-86915d970923)
 
 
@@ -26,6 +26,8 @@ Nela o usuário envia um arquivo .csv, a aplicação gera um grafo tal qual este
 Exibe-o na página e disponibiliza o arquivo PDF para download, como o do arquivo [text](output.pdf)
 
 A integração web é toda feita por requisiçöes intermediadas por bibliotecas python. 
+
+Acesse o site 
 
 ## Sobre a Equipe
 Equipe Code Club - HIPER-220 
