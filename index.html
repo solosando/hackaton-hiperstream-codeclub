@@ -21,6 +21,7 @@
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: auto;
+            text-align: center;
         }
         h1, h2 {
             margin-top: 0;
@@ -53,6 +54,12 @@
             border: none;
             margin-top: 20px;
         }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: none;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
@@ -66,8 +73,10 @@
             <button type="submit">Enviar CSV e Converter</button>
         </form>
 
-        <!-- Área para visualização do PDF -->
-        <iframe id="pdfViewer"></iframe>
+        <!-- Área para visualização do PNG -->
+        {% if show_png %}
+        <img src="{{ png_path }}" alt="Grafo">
+        {% endif %}
 
         <!-- Botão para baixar o PDF gerado -->
         <button onclick="downloadPDF()">Baixar PDF</button>
@@ -76,12 +85,6 @@
     <script>
         function downloadPDF() {
             window.location.href = '/download';
-        }
-
-        // Atualização para mostrar o PDF na tela
-        if (window.location.search.includes("pdf=true")) {
-            document.getElementById('pdfViewer').style.display = 'block';
-            document.getElementById('pdfViewer').src = '/download';
         }
     </script>
 </body>
