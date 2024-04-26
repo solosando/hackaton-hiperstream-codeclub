@@ -27,7 +27,6 @@ Exibe-o na página e disponibiliza o arquivo PDF para download, como o do arquiv
 
 A integração web é toda feita por requisiçöes intermediadas por bibliotecas python. 
 
-Acesse o site 
 
 ## Sobre a Equipe
 Equipe Code Club - HIPER-220 
