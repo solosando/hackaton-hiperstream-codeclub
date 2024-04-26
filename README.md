@@ -27,25 +27,6 @@ Exibe-o na página e disponibiliza o arquivo PDF para download, como o do arquiv
 
 A integração web é toda feita por requisiçöes intermediadas por bibliotecas python. 
 
-## Como Implementar a solução
-### Pré-requisitos
-
-- nginx instalado no seu sistema para rodar o container.
-- Python 3.9 ou versöes superiores
-
-### Instanciando os containers do servidor web e da aplicação
-
-1. Clone o repositório:
-` git clone (https://github.com/solosando/hackaton-hiperstream-codeclub/blob/main/README.md) `
-
-2. Construa o container nginx:
-`nginx build -t my-app .`
-
-3. Rode o container:
-`  nginx run --name my-app -p 80:80 -d my-app `
-
-Para usar o aplicativo do seu navegadior, acesse http://localhost:8000 ou http://127.0.0.1:8080
-
 ## Sobre a Equipe
 Equipe Code Club - HIPER-220 
 
